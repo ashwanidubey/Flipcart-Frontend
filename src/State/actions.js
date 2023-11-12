@@ -1,12 +1,21 @@
-// Define action types
-export const INCREMENT = 'INCREMENT';
-export const DECREMENT = 'DECREMENT';
-
+export const PRODUCTDESC = 'PRODUCTDESC';
+export const CREDENTIALS = 'CREDENTIALS'
+export const ISLOGGEDIN = 'ISLOGGEDIN'
 // Action creators
-export const increment = () => ({
-  type: INCREMENT,
-});
 
-export const decrement = () => ({
-  type: DECREMENT,
-});
+export const productdesc=(data)=>({
+    type: PRODUCTDESC,
+    data: data
+})
+
+export const credentials=(data)=>{
+    console.log(data)
+    return ({
+    type: CREDENTIALS,
+    data: data
+})}
+
+export const loggedin=(data)=>({
+    type: ISLOGGEDIN,
+    data: data
+})
