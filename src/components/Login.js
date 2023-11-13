@@ -71,7 +71,7 @@ export default function Login() {
           {/* Forgot Password Option */}
           <div className="mt-3">
             <p className="text-center">
-              <a href="#">Forgot Password?</a>
+              <a onClick={()=>{navigate('/construction')}}>Forgot Password?</a>
             </p>
           </div>
           <p>or</p>

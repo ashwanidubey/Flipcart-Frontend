@@ -1,8 +1,10 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { increment, decrement } from '../State/actions';
+import {useNavigate} from 'react-router-dom';
 
 export default function CardDesc() {
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const productDetails = useSelector((state) => state.productDetails);
 
@@ -16,7 +18,7 @@ export default function CardDesc() {
   };
 
   const handleBuyNow = () => {
-    // Implement your logic for the "Buy Now" button
+    navigate('/checkout');
   };
 
   if (!productDetails) {

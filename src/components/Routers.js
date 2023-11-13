@@ -9,6 +9,9 @@ import Signup from "./Signup";
 import Footer from "./Footer";
 import Home from "./Home";
 import CardDesc from "./CardDesc";
+import Checkout from "./Checkout";
+import Cart from "./Cart";
+import PaymentProcess from "./PaymentProcess";
 
 
 function Routers() {
@@ -24,6 +27,10 @@ function Routers() {
             <Route path="/carddesc" element={<CardDesc />} />
             <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<Signup />} />
+            <Route path="/checkout" element={<Checkout />} />
+            <Route path="/cart" element={<Cart />} />
+            <Route path="/construction" element={<h1>Page Under Construction , we are very sorry for inconvenience</h1>} />
+            <Route path="/testing" element={<PaymentProcess />} />
           </Routes>
         </div>
       <Footer />  

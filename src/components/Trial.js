@@ -22,7 +22,7 @@ export default function Trial() {
 5=>  add alerts
 6=>  mini alerts
 7=>  show order add cancel items
-8=>  show carts
+8=>  show carts 
 9=>  search 
 10=> filters
 11=> responsive and color
