@@ -45,7 +45,7 @@ const Checkoutbackup = () => {
 
   // Function to handle proceed button click
   const handleProceedButtonClick = () => {
-    console.log('Proceed button clicked!');
+    //console.log('Proceed button clicked!');
   };
 
   return (

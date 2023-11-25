@@ -1,7 +1,7 @@
 import React , {useState,useEffect} from 'react';
 import { Link } from 'react-router-dom';
 import {  useDispatch , useSelector } from 'react-redux';
-import {credentials ,loggedin} from '../State/actions'
+import {credentials ,loggedin,unsetIsHome} from '../State/actions'
 import {useNavigate} from 'react-router-dom';
 import login from '../../../fipcart-frontend/src/Functions/login';
 import validateLogin from '../Functions/validateLogin';
@@ -12,9 +12,12 @@ export default function Login() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const state=useSelector((state) => state)
+  const isHome =  useSelector((state) => state.isHome);
   const isLoggedin = state.isLoggedin;  
   useEffect(() => {
     if(isLoggedin)  {navigate('/');}
+    if(isHome)
+    dispatch(unsetIsHome())
   })
   const handleChange=(event)=>{
     setcredential({...credential,[event.target.name]:event.target.value});

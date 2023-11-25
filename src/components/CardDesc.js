@@ -1,28 +1,36 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { increment, decrement } from '../State/actions';
-import {useNavigate} from 'react-router-dom';
+import { increment, decrement ,paymentDetails,addToCart ,unsetIsHome} from '../State/actions';
+import { useNavigate } from 'react-router-dom';
 
 export default function CardDesc() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const isHome =  useSelector((state) => state.isHome);
   const productDetails = useSelector((state) => state.productDetails);
-
-  useEffect(() => {
-    // Fetch product details or trigger the action to fetch them
-    // dispatch(fetchProductDetails(productId));
-  }, [dispatch]);
-
+ useEffect(()=>{
+  //console.log(productDetails
+  if(isHome)
+     dispatch(unsetIsHome())
+ })
   const handleAddToCart = () => {
-    // Implement your logic for adding to the cart
+
+    dispatch(addToCart(productDetails))
   };
 
   const handleBuyNow = () => {
+     alert("buy now")
+    const paymentdetailsobject={
+      paymentPrice:productDetails.Price,
+      paymentItems:[productDetails]
+    }
+    dispatch(paymentDetails(paymentdetailsobject))
+    localStorage.setItem("payment","true")
     navigate('/checkout');
   };
 
   if (!productDetails) {
-    // Loading state or placeholder while product details are being fetched
+
     return <div>Loading...</div>;
   }
 

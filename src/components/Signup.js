@@ -2,16 +2,20 @@ import React , {useState,useEffect} from 'react';
 import { Link } from 'react-router-dom';
 import signup from '../Functions/signup';
 import { useSelector, useDispatch } from 'react-redux';
-import {credentials ,loggedin} from '../State/actions'
+import {credentials ,loggedin,unsetIsHome} from '../State/actions'
 import {useNavigate} from 'react-router-dom';
 import validateSignup from '../Functions/validateSignup'
 
 export default function SignUp() {
   const state=useSelector((state) => state)
-  const isLoggedin = state.isLoggedin;  
+  const isLoggedin = state.isLoggedin; 
+  const isHome =   state.isHome;
+ 
   useEffect(() => {
      
       if(isLoggedin)  {navigate('/');}
+      if(isHome)
+      dispatch(unsetIsHome())
   })
   
   const navigate = useNavigate();
@@ -24,13 +28,13 @@ export default function SignUp() {
   }
   const handleSubmitt=async(event)=>{
     event.preventDefault();
-    console.log(credential)
+    //console.log(credential)
     const result=validateSignup(credential);
     if(result.status)
     {
       setLoading(true);
     const response=await signup(credential.name,credential.email,credential.password);
-    console.log(response)
+  //  console.log(response)
     setLoading(false);
     if(response.success)
     {
@@ -47,7 +51,7 @@ export default function SignUp() {
     }
     else
     {
-      console.log(result.error)
+     // console.log(result.error)
     }
   } 
   return (

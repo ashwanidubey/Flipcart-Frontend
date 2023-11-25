@@ -1,11 +1,20 @@
 import React, { useState } from 'react'
+import {  useDispatch , useSelector } from 'react-redux';
 import { FcCheckmark } from "react-icons/fc";
 import Showaddress from './Showaddress';
 import CardPayment from './CardPayment';
 import UpiPayment from './UpiPayment';
 import PaymentProcess from './PaymentProcess';
+import {useNavigate} from 'react-router-dom';
+
 export default function Checkout() {
-  const [isLoggedIn, setIsLoggedIn] = useState(false)
+  //const [isLoggedIn, setIsLoggedIn] = useState(false)
+  const navigate = useNavigate();
+  const isLoggedIn=useSelector((state) => state.isLoggedin) 
+  const paymentPrice=useSelector((state) => state.paymentPrice) 
+  const paymentItems=useSelector((state) => state.paymentItems) 
+  const isHome =  useSelector((state) => state.isHome);
+
   const [addresses, setAddress] = useState([{ address: "Address1" }, { address: "Address2" }])
   const [checkedAddress, setCheckedAddress] = useState("");
   const [isAddressSelected, setIsAddressSelected] = useState(false)
@@ -13,14 +22,18 @@ export default function Checkout() {
   const [isPaymentSelected, setIsPaymentSelected] = useState(false)
   const[process,setProcess]=useState(false)
   const handleLogin = () => {
-    setIsLoggedIn(true)
+    //setIsLoggedIn(true)
+    navigate('/login')
   }
 
   return (
     <>
     { !process ?
     <>
+
       <div>
+      <h1>{paymentPrice}</h1>
+    <h1>{paymentItems.length}</h1>
         <h1>login{isLoggedIn && < FcCheckmark />}</h1>
         {!isLoggedIn && <button onClick={handleLogin}>login</button>}
       </div>

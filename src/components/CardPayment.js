@@ -4,7 +4,8 @@ export default function CardPayment({setIsPaymentSelected}) {
     const [cardNumber, setCardNumber] = useState('');
     const [cardName, setCardName] = useState('');
     const [cardCvv, setCardCvv] = useState('');
-    const [cardExpiry, setCardExpiry] = useState('');    
+    const [cardExpiry, setCardExpiry] = useState(''); 
+   
     return (
         <div>
             <form>

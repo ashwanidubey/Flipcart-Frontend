@@ -1,12 +1,16 @@
 import React from 'react';
-import {productdesc} from '../State/actions'
+import {productdesc,unsetIsHome} from '../State/actions'
 import { useNavigate } from 'react-router-dom'
-import {  useDispatch } from 'react-redux';
+import {  useSelector,useDispatch } from 'react-redux';
 const Card = ({ item, id }) => {
   const navigate=useNavigate();
   const dispatch = useDispatch();
+  const isHome =  useSelector((state) => state.isHome);
+
   const handleClick=(e)=>{
     dispatch(productdesc(item))
+    if(isHome)
+     dispatch(unsetIsHome())
     navigate("/carddesc")
    
   }

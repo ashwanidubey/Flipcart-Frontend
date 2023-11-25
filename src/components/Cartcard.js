@@ -1,6 +1,17 @@
 import React from 'react'
-
+import {  useDispatch } from 'react-redux';
+import {increaseCart,decreaseCart,removeCart, changeSelectCart} from '../State/actions'
 export default function Cartcard({item}) {
+  const dispatch = useDispatch();
+  const increase=()=>{
+    dispatch(increaseCart(item._id))
+  }
+  const decrease=()=>{
+    dispatch(decreaseCart(item._id))
+  }
+  const remove=()=>{
+    dispatch(removeCart(item._id))
+  }
   return (
     <>
     
@@ -8,7 +19,7 @@ export default function Cartcard({item}) {
     
     <div className="row g-0">
         <div className="col-md-1">
-        <input type="checkbox"/>
+        <input type="checkbox" checked={item.selected} onClick={()=>{dispatch(changeSelectCart(item._id))}}/>
         </div>
     
       <div className="col-md-3">
@@ -19,9 +30,9 @@ export default function Cartcard({item}) {
           <h5 className="card-title">{item.Title}</h5>
           <p className="card-text">{item.Description}</p>
           <p>price: {item.Price}</p>
-          <button>-</button> 1 <button>+</button>
+          <button onClick={decrease}>-</button> {item.quantity} <button onClick={increase}>+</button>
           <br/>
-          <button>remove</button>
+          <button onClick={remove}>remove</button>
         </div>
       </div>
     </div>
