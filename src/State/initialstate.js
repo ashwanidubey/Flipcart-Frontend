@@ -1,6 +1,7 @@
 import {getCartItems,priceCartItems,numberCartItems} from "../Functions/CartItems";
-const credentialdata=JSON.parse(localStorage.getItem("credential"))
-
+let credentialdata=JSON.parse(localStorage.getItem("credential"))
+credentialdata=credentialdata===undefined && {email:"",name:"",token:""}
+   
 
 const initialvalue = {
     productDetails: {},
