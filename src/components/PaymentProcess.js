@@ -1,8 +1,9 @@
 import React, { useEffect,useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import { FcCheckmark } from "react-icons/fc";
-import {  useDispatch , useSelector } from 'react-redux';
+import {   useSelector } from 'react-redux';
 import makepayment from '../Functions/payment'
+import { toast } from 'react-toastify';
 export default function PaymentProcess() {
   const navigate = useNavigate();
   const [payment,setPayment]=useState(false);
@@ -15,13 +16,16 @@ export default function PaymentProcess() {
       navigate('/');
     }, 9000)
     setTimeout(() => {
-      setPayment(true)
+      setPayment(true);
+      
     }, 6000)
   },[])
+  useEffect(()=>{if(payment)callToast()},[payment])
+  const callToast=()=>{toast("payment successfull , you order will be delivered soon")}
   const placeOrder=async ()=>{
-    //alert("payment "+localStorage.getItem("payment")+(localStorage.getItem("payment")=="false"))
+    //alert("payment "+localStorage.getItem("payment")+(localStorage.getItem("payment")==="false"))
 
-    if(localStorage.getItem("payment")=="false") return ;
+    if(localStorage.getItem("payment")==="false") return ;
    localStorage.setItem("payment","false");
      paymentItems.map((items)=>{
        makepayment(items,credentials.token,credentials.id)

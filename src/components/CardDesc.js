@@ -1,25 +1,25 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { increment, decrement ,paymentDetails,addToCart ,unsetIsHome} from '../State/actions';
+import { paymentDetails,addToCart ,unsetIsHome} from '../State/actions';
 import { useNavigate } from 'react-router-dom';
-
+import { toast } from 'react-toastify';
 export default function CardDesc() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const isHome =  useSelector((state) => state.isHome);
   const productDetails = useSelector((state) => state.productDetails);
  useEffect(()=>{
-  //console.log(productDetails
+ 
   if(isHome)
      dispatch(unsetIsHome())
  })
   const handleAddToCart = () => {
-
+    toast("Item added to cart");
     dispatch(addToCart(productDetails))
   };
 
   const handleBuyNow = () => {
-     alert("buy now")
+     //alert("buy now")
     const paymentdetailsobject={
       paymentPrice:productDetails.Price,
       paymentItems:[productDetails]
@@ -63,10 +63,10 @@ export default function CardDesc() {
             <span className="text-secondary">{productDetails.Ratings} Ratings & {productDetails.Reviews} Reviews</span>
           </div>
           <div className="mb-3">
-            <span className="text-warning">Extra ₹10,000 off</span>
+            <span className="text-warning">Extra ₹100 off</span>
           </div>
           <div className="mb-3">
-            <span className="text-danger">₹{productDetails.Price} ₹{productDetails.Price + 10000} 18% off</span>
+            <span className="text-danger">Price: ₹{productDetails.Price} </span>
           </div>
           <div className="mb-3">
             <span className="text-secondary">+ ₹99 Secured Packaging Fee</span>
@@ -75,13 +75,13 @@ export default function CardDesc() {
             <span className="text-primary">Available offers</span>
           </div>
           <ul>
-            <li>Bank OfferExtra ₹750 off on SBI Credit Card and Credit EMI Txns on Net Cart Value of ₹24,990 and aboveT&C</li>
-            <li>Bank OfferAdditional ₹3000 Off On SBI Credit and Debit Card TransactionsT&C</li>
+            <li>Bank OfferExtra ₹250 off on SBI Credit Card and Credit EMI Txns on Net Cart Value of ₹24,990 and aboveT&C</li>
+            <li>Bank OfferAdditional ₹600 Off On SBI Credit and Debit Card TransactionsT&C</li>
             <li>Bank Offer10% Instant Discount on SBI Credit Card EMI Txns, up to ₹1500, on orders of ₹5,000 and aboveT&C</li>
             {/* Add more offers as needed */}
           </ul>
           <div className="mb-3">
-            <span className="text-info">Special PriceGet extra ₹10,000 off (price inclusive of cashback/coupon)T&C</span>
+            <span className="text-info">Special PriceGet extra ₹10,00 off (price inclusive of cashback/coupon)T&C</span>
           </div>
           <div className="mb-3">
             <span>View 10 more offers</span>

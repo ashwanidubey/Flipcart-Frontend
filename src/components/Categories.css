@@ -1,0 +1,22 @@
+/* Categories.css */
+
+@media (min-width: 570px) and (max-width: 990px) {
+    .large-screen-navbar {
+      display: none;
+    }
+  
+    .small-screen-navbar {
+      display: block;
+    }
+  }
+  
+  @media (min-width: 991px) {
+    .large-screen-navbar {
+      display: block;
+    }
+  
+    .small-screen-navbar {
+      display: none;
+    }
+  }
+  

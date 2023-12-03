@@ -3,6 +3,7 @@ import Card from './Card';
 import Carousal from './Carousal';
 import {  useDispatch , useSelector } from 'react-redux';
 import { setIsHome} from '../State/actions';
+import { toast } from 'react-toastify';
 const Home = ({filter,setFilter}) => {
   const host = process.env.REACT_APP_HOST
   const [data, setData] = useState([]);
@@ -10,7 +11,7 @@ const Home = ({filter,setFilter}) => {
   const dispatch = useDispatch();
   const isHome =  useSelector((state) => state.isHome);
   useEffect(() => {
-    console.log(filter)
+   
     if(!isHome)
       {
         setFilter({categories:"All",rating:0,sortby:"Title",order:"ascending"})
@@ -18,15 +19,14 @@ const Home = ({filter,setFilter}) => {
     fetch(`${host}/products/searchall`)
       .then((response) => response.json())
       .then((result) => {
-        //console.log(result.items);
+       
         setData(result.items);
         let filtereddata=result.items.filter((item)=>{
-          console.log((item.Sub_Category===filter.categories || filter.categories==="All"))
           return (item.Sub_Category===filter.categories || filter.categories==="All")
         }).filter((item)=>{
           return (item.Stars>=filter.rating )
         }).sort((a,b)=>{
-               if(filter.sortby=="Title")
+               if(filter.sortby==="Title")
                {
                 if(filter.order==="ascending")
                    return  a.Title.localeCompare(b.Title)
@@ -42,10 +42,10 @@ const Home = ({filter,setFilter}) => {
               
         })
         setShowData(filtereddata)
-        console.log(filtereddata)
+       
       })
       .catch((error) => {
-        //console.log(error);
+        toast("some internal error")
       });
 
   }, []);
@@ -55,7 +55,7 @@ const Home = ({filter,setFilter}) => {
     }).filter((item)=>{
       return (item.Stars>=filter.rating )
     }).sort((a,b)=>{
-           if(filter.sortby=="Title")
+           if(filter.sortby==="Title")
            {
             if(filter.order==="ascending")
                return  a.Title.localeCompare(b.Title)
@@ -72,23 +72,23 @@ const Home = ({filter,setFilter}) => {
     })
     
     setShowData(filtereddata)
-    console.log(showdata)
+   
   }, [filter]);
 
   return (
-    <>
+    <div className="container px-4 mx-3">
     <Carousal />
     <div className="container">
-      <div className="row">
+      <div className="row" style={{ justifyContent: 'center' }}>
         {showdata &&
           showdata.map((item, id) => (
-            <div key={id} className="col-md-4 mb-4">
+            <div key={id} className="col-md-4 py-3">
               <Card id={id} item={item} />
             </div>
           ))}
       </div>
     </div>
-    </>
+    </div>
   );
 };
 

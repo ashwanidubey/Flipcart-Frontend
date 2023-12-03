@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
-//import 'bootstrap/dist/css/bootstrap.min.css';
-//import 'bootstrap/dist/js/bootstrap.bundle.min.js';
+
 
 export default function Carousal() {
     useEffect(() => {
@@ -27,15 +26,24 @@ export default function Carousal() {
                     <div className="carousel-item active" style={{ height: '300px' }}>
                         <img
                             src="https://rukminim1.flixcart.com/image/416/416/ktketu80/mobile/6/n/d/iphone-13-mlpg3hn-a-apple-original-imag6vpyghayhhrh.jpeg?q=70"
-                            className="d-block w-100 h-100"
-                            alt="A"
+                            className="d-block w-100"
+                            alt="B"
+                            style={{ objectFit: 'contain', height: '100%', width: '100%' }}
                         />
                     </div>
                     <div className="carousel-item" style={{ height: '300px' }}>
-                        <img src="https://i.postimg.cc/NfrNmW39/91-88878-02756-20210123-161741.jpg" className="d-block w-100" alt="B" />
+                        <img src="https://rukminim1.flixcart.com/image/832/832/xif0q/shoe/a/c/z/-original-imagnre4gh7vmjqf.jpeg?q=70" 
+                        className="d-block w-100"
+                        alt="B"
+                        style={{ objectFit: 'contain', height: '100%', width: '100%' }}                        
+                        />
                     </div>
                     <div className="carousel-item" style={{ height: '300px' }}>
-                        <img src="https://i.postimg.cc/HL1ZzpPX/IMG20221221165736-removebg-preview.jpg" className="d-block w-100" alt="C" />
+                        <img src="https://rukminim1.flixcart.com/image/416/416/xif0q/smartwatch/i/1/m/-original-imaghxg3nyd3dhwp.jpeg?q=70" 
+                        className="d-block w-100"
+                        alt="B"
+                        style={{ objectFit: 'contain', height: '100%', width: '100%' }}                        
+                        />
                     </div>
                 </div>
                 <button

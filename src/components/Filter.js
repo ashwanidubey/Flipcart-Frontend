@@ -11,7 +11,7 @@ export default function Filter({filter,setFilter}) {
     setFilter({...filter,["order"]:event.target.value});
   };    
   return (
-    <div className="container-fluid filter-container" style={{ width: '13rem'  }}>
+    <div className="container-fluid filter-container d-none d-md-block" style={{ width: '13rem'  }}>
       <div className="row" style={{ width: '13rem' }}>
         <div className="mx-0" style={{ width: '13rem' }}> {/* Add mx-0 to remove horizontal margin */}
           <div className="card">

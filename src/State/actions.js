@@ -17,7 +17,7 @@ export const productdesc=(data)=>({
 })
 
 export const credentials=(data)=>{
-    console.log(data)
+  
     return ({
     type: CREDENTIALS,
     data: data

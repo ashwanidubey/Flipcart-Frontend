@@ -29,7 +29,7 @@ export default function Cart() {
   return (
     <>
     { cartItems.length>0?
-      <div className="d-flex flex-row  container ">
+      <div className="d-flex flex-column flex-md-row container py-5">
         <div  className="col-md-6 row mx-3" style={{ maxHeight: '80vh', overflowY: 'auto' }}>
           {cartItems.map((item) => { 
             
@@ -53,7 +53,7 @@ export default function Cart() {
           </div>
           <button onClick={handleOrder}>Place Order</button>
         </div>
-      </div>:<>NO item</>
+      </div>:<div className='container py-5'><h1>NO ITEMS IN CART</h1></div>
 }
     </>
   )

@@ -28,7 +28,7 @@ export function decreaseCartItems(itemId) {
     return [];
   }
   const itemToUpdate = storedCartItems.find(item => item._id === itemId);
-  if (itemToUpdate && itemToUpdate.quantity == 1) {
+  if (itemToUpdate && itemToUpdate.quantity === 1) {
     removeCartItems(itemId);
     return;
   }
@@ -75,7 +75,7 @@ export function changeSelectCartItems(itemId) {
 export function priceCartItems(){
    const cartItems=getCartItems()
    return cartItems.reduce((total,item)=>{
-     if(item.selected==true)
+     if(item.selected===true)
      {
          return total+(item.Price*item.quantity)
      }
@@ -88,7 +88,7 @@ export function priceCartItems(){
 export function numberCartItems(){
   const cartItems=getCartItems()
   return cartItems.reduce((total,item)=>{
-    if(item.selected==true)
+    if(item.selected===true)
     {
         return total+1
     }
@@ -101,7 +101,7 @@ export function numberCartItems(){
 export function selectedItemList(){
   const cartItems=getCartItems()
   return cartItems.filter((item)=>{
-    return item.selected==true
+    return item.selected===true
     })
 }
 

@@ -15,7 +15,7 @@ const Card = ({ item, id }) => {
    
   }
   return (
-    <div className="card" style={{ width: '18rem', height: '100%' , cursor: 'pointer' }} onClick={handleClick}>
+    <div className="card mx-auto" style={{ width: '18rem', height: '100%' , cursor: 'pointer' }} onClick={handleClick}>
       <img
         src={item.Image}
         className="card-img-top"

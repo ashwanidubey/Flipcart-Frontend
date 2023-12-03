@@ -1,6 +1,7 @@
 import React from 'react'
 import {  useDispatch } from 'react-redux';
 import {increaseCart,decreaseCart,removeCart, changeSelectCart} from '../State/actions'
+import { toast } from 'react-toastify';
 export default function Cartcard({item}) {
   const dispatch = useDispatch();
   const increase=()=>{
@@ -10,6 +11,7 @@ export default function Cartcard({item}) {
     dispatch(decreaseCart(item._id))
   }
   const remove=()=>{
+    toast("item removed")
     dispatch(removeCart(item._id))
   }
   return (
