@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { credentials, unsetIsHome } from '../State/actions'
 import { useNavigate } from 'react-router-dom';
-import login from '../../../fipcart-frontend/src/Functions/login';
+import login from '../Functions/login';
 import validateLogin from '../Functions/validateLogin';
 import { toast } from 'react-toastify';
 
